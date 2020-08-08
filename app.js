@@ -32,7 +32,7 @@ app.use('/api/users/create_account', (req, res, next)=>{
   }
   UserAccounts
   .countDocuments(filter, function(error, count){
-    console.log(count);
+    //console.log(count);
     if(count){
       res.json({"status":"failed", "message":"102: For account type already exist for user"});
     }
@@ -41,7 +41,16 @@ app.use('/api/users/create_account', (req, res, next)=>{
         res.json({"status":"failed", "message":"101: For Basic Savings account balnce should be less than 50000"});
       }
       else{
-        next();
+        UserAccounts
+        .countDocuments({"account_number": req.body.account_number}, function(error, count){
+          //console.log(count);
+          if(count){
+            res.json({"status":"failed", "message":"103: For account number already exist for user"});
+          }
+          else{   
+            next();
+          }
+        });
       }
     }
   });
