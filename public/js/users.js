@@ -92,7 +92,7 @@ swal({
 function saveUser() {
 
   if($('#user_id').val().length < 3){
-    swal('error', 'Employee id should be atleast 4 charecters!!!');
+    swal('error', 'User id should be atleast 4 charecters!!!');
     return false;
   }
   if($('#name').val().length < 3){
