@@ -243,14 +243,17 @@ $("#filter_user_account").change(function(){
 })
 
 $("#user-send-submit").click(function(){
-  if($("#sender_account").val() == ''){
+  if($("#sender_account").val() == null || $("#sender_account").val() == ''){
     swal('error', 'Please, select sender account number');
+    return false;
   }
-  if($("#receiver_account").val() == ''){
+  if($("#receiver_account").val() == null || $("#receiver_account").val() == ''){
     swal('error', 'Please, select receiver account number');
+    return false;
   }
-  if($("#amount").val() == '' || $('$amount').val <= 0){
+  if($("#amount").val() == '' || $('#amount').val <= 0){
     swal('error', 'Please, enter amount');
+    return false;
   }
   $.post('/api/users/send',{
     "fromAccountId":$("#sender_account").val(),
@@ -372,12 +375,13 @@ function datatableUserAccount() {
       "dataSrc": (data)=>{
         return data['data'];
       },
+    "scrollX":true,
     "order": [[4, "desc"]],
     "columns": [
       { "title": "User ID", "data": "user_id", "className":"link text-left text-nowrap" },
       { "title": "Account Type", "data": "account_type", "className":"link text-left text-nowrap" },
       { "title": "Account Number", "data": "account_number", "className":"link text-left text-nowrap" },
-      { "title": "Balance", "data": "account_balance", "className":"link text-left text-nowrap", "searchable": false}
+      { "title": "Balance", "data": "account_balance", "className":"link text-left text-nowrap", "searchable": false},
       { "title": "Created At", "data": "createdAt", "className":"link text-left text-nowrap", "searchable": false},
       { "title": "Updated At", "data": "updatedAt", "className":"link text-left text-nowrap", "searchable": false}
     ]
@@ -405,6 +409,7 @@ function datatableLedger() {
       "dataSrc": (data)=>{
         return data['data'];
       },
+    "scrollX":true,
     "order":[[4,"Desc"]],
     "columns": [
       { "title": "From/To", "data": "remitter_number", "className":"link text-left text-nowrap", "searchable": false},
