@@ -6,11 +6,11 @@ exports.send = (req, res) => {
     selectAccounts(details)
 	.then(data=>{
 		//console.log(data)
-		if(data['sender'].account_balance < details.amount || (data['receiver'].account_type == 'BasicSavings' && data['receiver'].balance+details.amount > 50000)){
+		if(data['sender'].account_balance < details.amount || (data['receiver'].account_type == 'BasicSavings' && (data['receiver'].account_balance+parseInt(details.amount)) > 50000)){
 			if(data['sender'].account_balance < details.amount ){
 				res.send({"errorCode":"SND005", "errorMessage":"Source account should have the required amount for the transaction to succeed" });
 			}
-			if(data['receiver'].account_type == 'BasicSavings' && data['receiver'].balance+details.amount > 50000){
+			if(data['receiver'].account_type == 'BasicSavings' && (data['receiver'].account_balance+parseInt(details.amount)) > 50000){
 				res.send({"errorCode":"SND006", "errorMessage":"BasicSavings’ account type should never exceed Rs. 50,000" });
 			}
 		}
