@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.0/bootstrap-table.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Users</title>
+</head>
+<body>
+
+    <a class="btn btn-primary btn-sm font-14 pull-right " href="#" title="" id="add-user-button"><span><i class="fa fa-plus"></i> Add New User</span></a>
+    <h3>Users/Customers</h3>
+    <div class="container">
+            <div class="example-box-wrapper">
+                <table id="datatable-user" class="table table-striped table-bordered" cellspacing="0" width="80%">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="user-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-body">
+  
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card card-outline-info">
+                                      <div class="card-header">
+                                         <h4 class="m-b-0 text-white" id="appointment-title">Add User
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                         </h4>
+                                      </div>
+                                      
+                          <div class="card-body">
+                      
+                      <form id="user-form" name='user-form' class="form-horizontal bordered-row">
+                          
+                          <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label text-left"> Name</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="">
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label text-left"> User ID</label>
+                                        <input type="text" class="form-control" name="user_id" id="user_id" placeholder="">
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </form>
+                      <div class="pull-right">                      
+                        <button type="button" class="btn btn-danger hide" id="user-form-delete">Delete</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="user-form-submit">Save User</button>
+                        <button type="button" class="btn btn-inverse btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  
+  </div>
+  </div>
+  
+                  
+  </div>
+       
+  
+    <!-- Modal -->
+	<div class="modal fade" id="user-account-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card card-outline-info">
+                                  <div class="card-header">
+                                     <h4 class="m-b-0 text-white" >User Accounts
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                     </h4>
+                                  </div>
+                                  
+                      <div class="card-body">
+                  
+                  <form id="user-form" name='user-form' class="form-horizontal bordered-row">
+                      
+                      <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label text-left"> Account Type</label>
+                                    <select class="form-control" name="account_type" id="account_type" >
+                                      <option value="Savings">Savings</option>>
+                                      <option value="Current">Current</option>>
+                                      <option value="BasicSavings">BasicSavings</option>>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label text-left">Account Number</label>
+                                    <input type="number" class="form-control" name="account_number" id="account_number" placeholder="">
+                                    <input type="hidden" name="account_user_id" id="account_user_id" placeholder="">
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label text-left">Account Initial Balance</label>
+                                    <input type="number" class="form-control" name="account_balance" id="account_balance" placeholder="">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right">                      
+                      <button type="button" class="btn btn-primary btn-sm" id="user-account-submit">Save Account</button>
+                      <button type="button" class="btn btn-inverse btn-sm" data-dismiss="modal">Close</button>
+                  </div>
+                  </form>
+
+                  <div class="container">
+                    <div class="example-box-wrapper">
+                        <table id="datatable-user-account" class="table table-striped table-bordered" cellspacing="0" width="80%">
+                        </table>
+                    </div>
+                </div>
+            </div>
+                 
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+   
+  
+    <!-- Modal -->
+    <div class="modal fade" id="user-ledger-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          
+          <div class="modal-body">
+  
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-outline-info">
+                                    <div class="card-header">
+                                       <h4 class="m-b-0 text-white" >Send Money
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                       </h4>
+                                    </div>
+                                    
+                        <div class="card-body">
+                    
+                    <form id="user-form" name='user-form' class="form-horizontal bordered-row">
+                        
+                        <div class="form-body">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <div class="form-group row">
+                                  <div class="col-md-12">
+                                      <label class="control-label text-left">Sender Accounts</label>
+                                      <select class="form-control  user-accounts" name="sender_account" id="sender_account" >
+                                      </select>
+                                  </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                  <div class="form-group row">
+                                  <div class="col-md-12">
+                                      <label class="control-label text-left">Receiver Account</label>
+                                      <select class="form-control" name="receiver_account" id="receiver_account" >
+
+                                      </select>
+                                      <input type="hidden" name="sender_user_id" id="sender_user_id" placeholder="">
+                                  </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                  <div class="form-group row">
+                                  <div class="col-md-12">
+                                      <label class="control-label text-left">Amount</label>
+                                      <input type="number" class="form-control" name="amount" id="amount" placeholder="">
+                                  </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="pull-right">                      
+                        <button type="button" class="btn btn-primary btn-sm" id="user-send-submit">Send Money</button>
+                        <button type="button" class="btn btn-inverse btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                    </form>
+                    <br>
+                    <div class="container">
+                      <h4>Ledger</h4>
+                      <select class="form-control user-accounts col-2" id="filter_user_account"></select>
+                      <div class="example-box-wrapper">
+                          <table id="datatable-ledger" class="table table-striped table-bordered" cellspacing="0" width="80%">
+                          </table>
+                      </div>
+                  </div>
+              </div>
+                   
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+  </div>
+  </div>
+  
+                
+  </div>
+      
+
+              
+</div>
+    
+			
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>
+   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="/js/users.js"></script>
+
+   
+  </body>
+</html>
+
+
+
+
